@@ -1,0 +1,66 @@
+%% 07/30/18
+
+weight1=input('Input weight of package: ');
+weight=ceil(weight1);
+if(weight>50)
+    fprintf('Service is not available for packages over 50lb');
+    return
+elseif(weight<=0)
+    fprintf('Please input a positive number');
+    return
+end
+service=input('Input type of service: ','s');
+comp1=('overnight');
+comp2=('2nd day');
+comp3=('ground');
+c1=strcmp(service,comp1);
+c2=strcmp(service,comp2);
+c3=strcmp(service,comp3);
+if(weight>10)
+    if(c1==1)
+        fprintf('Overnight service is not available for packages over 10lb');
+        return
+    end
+    if(c2==1)
+        price=19+((weight-10)*0.9);
+        fprintf('Price is $%.2f',price);
+        return
+    end
+    if(c3==1)
+        price1=9.5+((weight-10)*0.45);
+        fprintf('Price is $%.2f',price1);
+        return
+    end
+        return
+elseif(2<weight&weight<=10)
+        if(c1==1)
+        price2=15+((weight-2)*5.5);
+        fprintf('Price: $%.2f',price2);
+        return
+        end
+        if(c2==1)
+            price3=9.4+((weight-2)*1.2);
+            fprintf('Price: $%.2f',price3);
+            return
+        end
+        if(c3==1)
+            price4=3.5+((weight-2)*0.75);
+            fprintf('Price: $%.2f',price4);
+            return
+        end
+        return
+else
+    if(c1==1)
+        fprintf('Price: $15');
+        return
+    end
+    if(c2==1)
+        fprintf('Price: $9.40');
+        return
+    end
+    if(c3==1)
+        fprintf('Price: $3.50');
+        return
+    end
+end
+return
