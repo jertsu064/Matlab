@@ -1,0 +1,11 @@
+%07/30/18
+
+fplot(@(t)(9.*exp(-0.3*t)).*sin(8.*t+2),[0,20]);
+hold;
+fplot(@(t)(6.*exp(-0.2.*t)).*sin(2*t-6),[0,20]);
+hold off;
+title({'MACHINE VIBRATION', 'Assignment 3, Problem 1 - Tsu'});
+axis([0 20 -10 10]);
+xlabel('Time, t(s)');
+ylabel('Amplitude y1, y2 (mm)');
+legend('y1(t)=9e^(-0.3t)sin(8t+2)','y2(t)=6e^(-0.2t)sin(2t-6)');
