@@ -1,0 +1,23 @@
+%% 07/26/18
+
+x=-4:0.1:4;
+y=-4:0.1:4;
+[X,Y]=meshgrid(x,y);
+z=((Y+5).^2)+(1.5*X.^2)-((X.^2).*Y);
+subplot(2,1,1);
+surf(X,Y,z);
+xlabel('x');
+ylabel('y');
+zlabel('z(x,y)');
+grid on
+view(-25, 25);
+title({'z=(y+5)^2+1.5x^2-x^2y','Assignment 3, Problem 8 - Tsu'});
+subplot(2,1,2);
+contour(X,Y,z);
+view(-25, 25);
+xlabel('x');
+ylabel('y');
+zlabel('z(x,y)');
+[c,h]=contour(X,Y,z);
+clabel(c,h)
+colorbar
