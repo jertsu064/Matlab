@@ -1,0 +1,13 @@
+%% 07/26/18
+
+x=-7:0.1:7;
+y=-7:0.1:7;
+[X,Y]=meshgrid(x,y);
+z=cos((X.^2+Y.^2).^(0.5));
+surf(X,Y,z);
+title({'Assignment 3, Problem 7 - Tsu'});
+xlabel('x');
+ylabel('y');
+zlabel('z(x,y)');
+grid on
+view(40, 60);
