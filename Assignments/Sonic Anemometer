@@ -1,0 +1,135 @@
+% Data analysis of sonic anemometer input read from Excel sheets
+
+clc
+clear all
+clf
+file1='No heat.xlsx';
+file2='5 heat.xlsx';
+file3='10 heat.xlsx';
+sheet=1;
+ 
+%constants
+rho=1.2; %[kg/m^3]
+gamma=1.4; %cp/cv
+R=287.04; %[J/kgK]
+CP=1005; %[J/kgK]
+ 
+%No heat Experiment
+u=xlsread(file1,'B:B');
+uavg=mean(u);
+up=u-uavg;
+v=xlsread(file1,'D:D');
+vavg=mean(v);
+vp=v-vavg;
+w=xlsread(file1,'F:F');
+wavg=mean(w);
+wp=w-wavg;
+T=xlsread(file1,'H:H');
+T=T+273; %[K]
+Tavg=mean(T);
+Tp=T-Tavg;
+C=xlsread(file1,'J:J');
+Cavg=mean(C);
+Cp=C-Cavg;
+ 
+[a b]=size(u);
+%---Reynold stresses with no heat
+uw=mean(up.*wp);
+uv=mean(up.*vp);
+vw=mean(vp.*wp);
+ut=mean(up.*Tp);
+vt=mean(vp.*Tp);
+wt=mean(wp.*Tp);
+ 
+Hs=rho*CP*wt;
+ 
+%tubulent intensity
+up2=up.^2;
+upavg=sqrt(mean(up2));
+vp2=vp.^2;
+vpavg=sqrt(mean(vp2));
+wp2=wp.^2;
+wpavg=sqrt(mean(wp2));
+uI=sqrt((1/3)*((upavg^2)+vpavg^2+wpavg^2));
+UI=sqrt((uavg^2)+(vavg^2)+(wavg^2));
+I=uI/UI;
+ 
+ 
+%Heat at 5
+u5=xlsread(file2,'B:B');
+uavg5=mean(u5);
+up5=u5-uavg5;
+v5=xlsread(file2,'D:D');
+vavg5=mean(v5);
+vp5=v5-vavg5;
+w5=xlsread(file2,'F:F');
+wavg5=mean(w5);
+wp5=w5-wavg5;
+T5=xlsread(file2,'H:H');
+T5=T5+273; %[K]
+Tavg5=mean(T5);
+Tp5=T5-Tavg5;
+C5=xlsread(file2,'J:J');
+Cavg5=mean(C5);
+Cp5=C5-Cavg5;
+ 
+[a5 b5]= size(u5);
+%---Reynold stresses with heat at 5
+uw5=mean(up5.*wp5);
+uv5=mean(up5.*vp5);
+vw5=mean(vp5.*wp5);
+ut5=mean(up5.*Tp5);
+vt5=mean(vp5.*Tp5);
+wt5=mean(wp5.*Tp5);
+Hs5=rho*CP*wt5;
+ 
+%tubulent intensity
+up25=up5.^2;
+upavg5=sqrt(mean(up25));
+vp25=vp5.^2;
+vpavg5=sqrt(mean(vp25));
+wp25=wp5.^2;
+wpavg5=sqrt(mean(wp25));
+uI5=sqrt((1/3)*((upavg5^2)+vpavg5^2+wpavg5^2));
+UI5=sqrt((uavg5^2)+(vavg5^2)+(wavg5^2));
+I5=uI5/UI5;
+ 
+%Heat at 10
+u1=xlsread(file3,'B:B');
+uavg1=mean(u1);
+up1=u1-uavg1;
+v1=xlsread(file3,'D:D');
+vavg1=mean(v1);
+vp1=v1-vavg1;
+w1=xlsread(file3,'F:F');
+wavg1=mean(w1);
+wp1=w1-wavg1;
+T1=xlsread(file3,'H:H');
+T1=T1+273; %[K]
+Tavg1=mean(T1);
+Tp1=T1-Tavg1;
+C1=xlsread(file3,'J:J');
+Cavg1=mean(C1);
+Cp1=C1-Cavg1;
+ 
+[a1 b1]=size(u1);
+ 
+%---Reynold stresses with heat at 10
+uv1=mean(up1.*vp1);
+vw1=mean(vp1.*wp1);
+uw1=mean(wp1.*up1);
+ut1=mean(up1.*Tp1);
+vt1=mean(vp1.*Tp1);
+wt1=mean(wp1.*Tp1);
+Hs1=rho*CP*wt1;
+ 
+%tubulent intensity
+up21=up1.^2;
+upavg1=sqrt(mean(up21));
+vp21=vp1.^2;
+vpavg1=sqrt(mean(vp21));
+wp21=wp1.^2;
+wpavg1=sqrt(mean(wp21));
+uI1=sqrt((1/3)*((upavg1^2)+vpavg1^2+wpavg1^2));
+UI1=sqrt((uavg1^2)+(vavg1^2)+(wavg1^2));
+I1=uI1/UI1;
