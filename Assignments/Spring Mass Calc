@@ -1,0 +1,47 @@
+%This program uses a bisection method to iteratively solve for the solution of a spring mass system
+
+w=input('Input weight: ');
+xL=input('Input lower bracket: ');
+xu=input('Input upper bracket: ');
+a=10;
+b=7;
+k=20;
+errtolerance=0.05;
+iter=1;
+L0 = sqrt(a^2 + b^2);
+l =@(x) sqrt(a^2 + (b+x)^2); 
+W =@(x) 2*k*((sqrt(a^2+(b+x)^2))-L0)*(b+x)/(sqrt(a^2+(b+x)^2));
+xu0=xu;
+xL0=xL;
+xr0=(xL+xu)/2;
+xr1=xr0;
+err=999;
+
+fprintf('Solution by: Jerry Tsu\nDate: 7/11/2018\n\nw=%d lb\n',w);
+fprintf('Iteration   Xl    Xu    Xr    error\n');
+fprintf('-----------------------------------------\n');
+for iter=1:100
+    xr1=(xL0+xu0)/2;
+    if W(xr1)>0
+        xu0=xr1;
+    else
+        xL=xr1;
+    end
+end
+for iter=1:100
+    xr1=(xL+xu)/2;
+    err(iter)=W(xr1)-W(xr0);
+          err=(abs((xr0-xr1)/xr1))*100;
+     fprintf('%f   %f    %f    %f    %f\n',iter,xL,xu,xr1,err);
+    if W(xr1)>0
+        xu=xr1;
+    else
+        xL=xr1;
+    end
+end
+
+solution=xr1;
+
+fprintf('\nsolution: x=%f in',solution);
+
+return
