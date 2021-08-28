@@ -1,0 +1,36 @@
+function [x]=A7GAUSStsu(mata,vecb)
+%calculate a solution vector x, given input arguments
+%matrix a and vector b
+
+%tsu, jerry
+%function tile: gauss elimination method
+[m,n]=size(mata);
+a=mata;
+b=vecb;
+c=length(b);
+
+if(m~=n)
+    fprintf('Coefficient matrix A must be square');
+    return
+end
+matab=[a,b];
+nc=n+1;
+for p = 1:(n-1)
+    [~,i]=max(abs(matab(p:n,p)));
+    arb2=i+(p-1);
+    if arb2~=p
+        matab([p,arb2],:)=matab([arb2,p],:);
+    end
+    for i=p+1:n
+        factor=matab(i,p)/matab(p,p);
+        matab(i,p:nc)=matab(i,p:nc)-factor*matab(p,p:nc);
+    end
+end
+%back substitution
+x=zeros(n,1);
+x(n)=matab(n,nc)/matab(n,n);
+for i=n-1:-1:1
+    x(i)=(matab(i,nc)-matab(i,i+1:n)*x(i+1:n))/matab(i,i);
+end
+
+end
