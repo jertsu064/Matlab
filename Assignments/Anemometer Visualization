@@ -1,0 +1,32 @@
+% Anemometer data visualization, using same data from Sonic Anemometer Excel sheets
+
+clc; clear all; clf;
+file1='No heat.xlsx';
+file2='5 heat.xlsx';
+file3='10 heat.xlsx';
+
+u=xlsread(file1, 'H:H')
+v=xlsread(file2,'H:H');
+w=xlsread(file3,'H:H');
+t=linspace(0,1800,3107);
+t2=linspace(0,1800,1684);
+t3=linspace(0,1800, 1821);
+
+subplot(3,1,1);
+plot(t,u)
+title('Temperature vs. Time No Heat');
+xlabel('T (sec)');
+ylabel('Temp(K)');
+% hold on
+
+subplot(3,1,2);
+plot(t2,v)
+title('Temperature vs. Time Low Heat');
+xlabel('T (sec)');
+ylabel('Temp (K)');
+
+subplot(3,1,3);
+plot(t3,w)
+title('Temperature vs Time High Heat');
+xlabel('T (sec)');
+ylabel('Temp (K)');
