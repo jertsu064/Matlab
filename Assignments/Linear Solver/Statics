@@ -1,0 +1,28 @@
+%Solves for the coefficients of a linear system analysis of truss loads
+
+A=[0 -1 0 0 0 1 0 0 0 0 0 0 0;
+    0 0 1 0 0 0 0 0 0 0 0 0 0;
+    -(sqrt(2))/2 0 0 1 (sqrt(2))/2 0 0 0 0 0 0 0 0;
+    -(sqrt(2))/2 0 -1 0 -(sqrt(2))/2 0 0 0 0 0 0 0 0;
+    0 0 0 -1 0 0 0 1 0 0 0 0 0;
+    0 0 0 0 0 0 1 0 0 0 0 0 0;
+    0 0 0 0 -(sqrt(2))/2 -1 0 0 (sqrt(2))/2 1 0 0 0;
+    0 0 0 0 (sqrt(2))/2 0 1 0 (sqrt(2))/2 0 0 0 0;
+    0 0 0 0 0 0 0 0 0 -1 0 0 1;
+    0 0 0 0 0 0 0 0 0 0 1 0 0;
+    0 0 0 0 0 0 0 -1 -(sqrt(2))/2 0 0 (sqrt(2))/2 0;
+    0 0 0 0 0 0 0 0 -(sqrt(2))/2 0 -1 -(sqrt(2))/2 0;
+    0 0 0 0 0 0 0 0 0 0 0 -(sqrt(2))/2 -1;]
+b=[0;10;0;0;0;0;0;15;0;10;0;0;0];
+x=A7GAUSStsu(A,b);
+fprintf('\n Assignment 7, Part 3b - statics \n'); 
+fprintf('\n Coefficient Matrix A : \n\n');
+for i=1:size(A,1)
+ fprintf('%10.2f',A(i,:));
+ fprintf('\n');
+end
+fprintf('\n Vector b: \n\n');
+fprintf('%10.f\n',b);
+fprintf('\n Solution Vector x: \n\n');
+fprintf('%10.2e kN\n',x);
+fprintf('\n\n');
