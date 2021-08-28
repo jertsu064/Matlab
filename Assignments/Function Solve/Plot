@@ -1,0 +1,9 @@
+func=@(x)4*(x.^3)-5*(x.^2)+7*x-20;
+derivative=@(x)12*(x.^2)-10*x+7;
+A6ROOTtsu(func,derivative,0.0,0.001,100);
+
+fplot(func,[0 3]);
+grid on
+xlabel('x')
+ylabel('f(x)')
+title({'Assignment 6, Part 2 - Tsu','Root: x=1.810'});
