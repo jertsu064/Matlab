@@ -1,4 +1,5 @@
 %% Date: 07/26/2018
+%Visualization of particle motion with predefined functions
 
 t=linspace(0,5,100);
 x=0.6*t.^3-2*t.^2-8*t+12;
