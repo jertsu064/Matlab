@@ -1,3 +1,5 @@
+%This project provides the visualization for the kinematics and dynamics of a four bar linkage
+
 clear all;
 clc;
 close all;
