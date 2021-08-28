@@ -1,0 +1,16 @@
+%Solves for the coefficients of a linear system using Gaussian elimination 
+
+A=[1 1 0 0 0 1;0 0 0 -1 1 -1; 0 -1 1 0 0 0; 0 0 -1 1 0 0; 0 -5 -5 -15 0 20;5 0 0 0 -20 -20];
+b=[0;0;0;0;0;24];
+x=A7GAUSStsu(A,b);
+fprintf('\n Assignment 7, Part 3b - electrical circuits \n'); 
+fprintf('\n Coefficient Matrix A : \n\n');
+for i=1:size(A,1)
+ fprintf('%10.2f',A(i,:));
+ fprintf('\n');
+end
+fprintf('\n Vector b: \n\n');
+fprintf('%10.f\n',b);
+fprintf('\n Solution Vector x: \n\n');
+fprintf('%10.2e amp\n',x);
+fprintf('\n\n');
